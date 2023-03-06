@@ -1,0 +1,47 @@
+<!-- Extend base template -->
+{% extends 'base.html' %}
+
+<!-- Set active class for 'About' menu item -->
+{% set active = "Signup" %}
+
+<!-- Update page title with 'Signup' -->
+{% block title %} Signup {% endblock %}
+
+<!-- About page content -->
+{% block content %}
+<div class="container-fluid page-content">
+  <div class="container">
+    <div class="row page-header">
+      <div class="col-md-12">
+        <h1><span>Sign Up</span></h1>
+        <p>Register to receive a vaccination schedule based on date of birth, and be reminded before each due shot by
+          email.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid vaccine-form" id="signup-form">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-6">
+        <h2> Registration Form </h2>
+        <form method="post">
+          <input type="text" class="form-control" placeholder="Child Name" required="required">
+          <input type="email" class="form-control" placeholder="Email Address" required="required">
+          <input type="password" class="form-control" placeholder="Password" required="required">
+          <input type="password " class="form-control" placeholder="Confirm Password" required="required">
+          <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone"
+            required="required">
+          <input type="text" id="date" class="form-control" placeholder="Child's Birthday" required="required">
+          <div class="form-group">
+            <button class="btn btn-primary" value="Log In" type="submit">Create Account <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
