@@ -22,10 +22,10 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6 col-lg-6">
-          <h2> Login Form </h2>
+{#          <h2> Login Form </h2>#}
           <form method="post">
-            <input type="email" class="form-control" placeholder="Email Address" required="required">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required="required">
+            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
             <div class="form-group">
               <button class="btn btn-primary" value="Log In" type="submit">Log In <i class="fa fa-angle-right"
                   aria-hidden="true"></i></button>
@@ -33,7 +33,7 @@
           </form>
           <div class="section">
             <p>
-              <a href="/forgot-password">Forgot Password</a>
+              <a href="/reset-password">Forgot Password</a>
             </p>
             <p>
               Don't have an account? <a href="/signup">Sign Up</a>

@@ -20,22 +20,22 @@
     </div>
   </div>
 </div>
-
+{#    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"#}
 <div class="container-fluid vaccine-form" id="signup-form">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-6">
-        <h2> Registration Form </h2>
+{#        <h2> Registration Form </h2>#}
         <form method="post">
-          <input type="text" class="form-control" placeholder="Child Name" required="required">
-          <input type="email" class="form-control" placeholder="Email Address" required="required">
-          <input type="password" class="form-control" placeholder="Password" required="required">
-          <input type="password " class="form-control" placeholder="Confirm Password" required="required">
-          <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone"
+          <input type="text" class="form-control" name="name"  placeholder="Child Name" required="required">
+          <input type="email" id="email" class="form-control" name="email" placeholder="Email Address" required="required">
+          <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+          <input type="password" class="form-control" name="confirm password" placeholder="Confirm Password" required="required">
+          <input type="tel" class="form-control" name="phone"  placeholder="Phone"
             required="required">
-          <input type="text" id="date" class="form-control" placeholder="Child's Birthday" required="required">
+          <input type="text" id="date" class="form-control" name="birthday" placeholder="Child's Birthdate" required="required">
           <div class="form-group">
-            <button class="btn btn-primary" value="Log In" type="submit">Create Account <i class="fa fa-angle-right"
+            <button class="btn btn-primary" value="Log In" type="submit" >Create Account <i class="fa fa-angle-right"
                 aria-hidden="true"></i></button>
           </div>
         </form>
