@@ -7,6 +7,11 @@
 <!-- Update page title with 'Calendar Schedule' -->
 {% block title %} Calendar Schedule {% endblock %}
 
+<!-- Load calendarSchedule JS -->
+{% block header %}
+  <script src="/static/js/calendarSchedule.js"></script>
+{% endblock %}
+
 <!-- Calendar Schedule page content -->
 {% block content %}
   <div class="row fh5co-narrow-content vaccine-list">
@@ -23,19 +28,19 @@
           <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div bcg_1" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div bcg_1"></div>
                 <span class="panel-content-span">BCG - Dose 1</span>
               </div>
             </div>
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div hep_b_1" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div hep_b_1"></div>
                 <span class="panel-content-span">HEP B - Dose 1</span>
               </div>
             </div>
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div opv_1" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div opv_1"></div>
                 <span class="panel-content-span">OPV - Dose 1</span>
               </div>
             </div>
@@ -50,19 +55,19 @@
           <div id="collapse2" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div hep_b_2" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div hep_b_2"></div>
                 <span class="panel-content-span">HEP B - Dose 2</span>
               </div>
             </div>
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div opv_2" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div opv_2"></div>
                 <span class="panel-content-span">OPV - Dose 2</span>
               </div>
             </div>
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div dpt_1" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div dpt_1"></div>
                 <span class="panel-content-span">DPT - Dose 1</span>
               </div>
             </div>
@@ -74,16 +79,16 @@
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">{{ vaccineDates[2] }} (After 1 month and 15 days)</a>
             </h4>
           </div>
-          <div id="collapse3" class="panel-collapse collapse in">
+          <div id="collapse3" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div ipv_1" style="background-color: rgb(255, 118, 118);"></div>
+                <div class="panel-content-div ipv_1"></div>
                 <span class="panel-content-span">IPV - Dose 1</span>
               </div>
             </div>
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div pneumococcal_1" style="background-color: rgb(255, 118, 118);"></div>
+                <div class="panel-content-div pneumococcal_1"></div>
                 <span class="panel-content-span">PNEUMOCOCCAL - Dose 1</span>
               </div>
             </div>
@@ -98,7 +103,7 @@
           <div id="collapse4" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-content">
-                <div class="panel-content-div rotavirus_1" style="background-color: rgb(153, 233, 153);"></div>
+                <div class="panel-content-div rotavirus_1"></div>
                 <span class="panel-content-span">ROTAVIRUS - Dose 1</span>
               </div>
             </div>
@@ -434,4 +439,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $(() => {
+      const calendarSchedule = new CalendarSchedule();
+      calendarSchedule.load();
+    });
+  </script>
 {% endblock %}
