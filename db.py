@@ -1,6 +1,5 @@
 import sqlite3
 
-
 class Database:
     def __init__(self, path):
         self.conn = sqlite3.connect(path)
@@ -24,12 +23,24 @@ class Database:
         account = c.fetchone()
         self.execute(
             "insert into registration_tbl(name,email,password,contact,birthdate,gender,otp) values(?,?,?,?,?,?,?)",
-            [name, email, password, contact, birthdate, 'F', '000000'])
+            [name, email, password, contact, birthdate, 'M', '000000'])
         self.conn.commit()
         print("You have successfully registered")
 
     def update_otp(self, otp, email):
         self.execute('UPDATE registration_tbl SET otp=? WHERE email=?', [otp, email])
+        self.conn.commit()
+
+    def update_name(self, name, email):
+        self.execute('UPDATE registration_tbl SET name=? WHERE email=?', [name, email])
+        self.conn.commit()
+
+    def update_dob(self, dob, email):
+        self.execute('UPDATE registration_tbl SET birthdate=? WHERE email=?', [dob, email])
+        self.conn.commit()
+
+    def update_phone(self, phone, email):
+        self.execute('UPDATE registration_tbl SET birthdate=? WHERE email=?', [phone, email])
         self.conn.commit()
 
     def update_password(self, email, password):
@@ -50,8 +61,11 @@ class Database:
         if data:
             d = data[0]
             return {
-                'username': d[1],
+                'name': d[0],
+                'email': d[1],
                 'encrypted_password': d[2],
+                'contact': d[3],
+                'birthdate': d[4],
             }
         else:
             return None

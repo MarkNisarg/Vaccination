@@ -26,7 +26,9 @@
 <body>
   <div id="fh5co-page">
     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-      <h1 id="fh5co-logo"><a href="/profile">Nisarg</a></h1>
+      {% if session['user'] %}
+      <h1 id="fh5co-logo"><a href="/profile"> {{ session['user']['name'] }}</a></h1>
+      {% endif %}
       <nav id="fh5co-main-menu" role="navigation">
         <ul>
           <li class="{% if active == 'Vaccine Schedule' %} fh5co-active {% endif %}"><a href="/vaccine-schedule"><i class="fa fa-th" aria-hidden="true"></i>Vaccine Schedule</a></li>
@@ -34,7 +36,7 @@
           <li class="{% if active == 'Vaccine Details' %} fh5co-active {% endif %}"><a href="/vaccine-details"><i class="fa fa-info-circle" aria-hidden="true"></i>Vaccine Details</a></li>
           <li class="{% if active == 'Ask Question' %} fh5co-active {% endif %}"><a href="/ask-question"><i class="fa fa-question-circle" aria-hidden="true"></i>Ask Question</a></li>
           <li class="{% if active == 'Profile' %} fh5co-active {% endif %}"><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-          <li class="{% if active == 'Home' %} fh5co-active {% endif %}"><a href="?action=logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+          <li class="{% if active == 'Home' %} fh5co-active {% endif %}"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
       </nav>
     </aside>
