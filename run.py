@@ -2,7 +2,7 @@ from flask import (Flask, g, jsonify, redirect, render_template, request, sessio
 from passlib.hash import pbkdf2_sha256
 from flask_mail import Mail, Message
 from random import randint
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 
 from db import Database
 
@@ -19,13 +19,11 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 otp = randint(100000, 999999)
 
-
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
         db = Database(DATABASE_PATH)
     return db
-
 
 @app.teardown_appcontext
 def close_db(exception):
@@ -33,21 +31,17 @@ def close_db(exception):
     if db is not None:
         db.close()
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
-
 
 @app.route('/services')
 def services():
     return render_template('services.html')
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
@@ -57,7 +51,6 @@ def contact():
         Message = request.form['Message']
         get_db().update_contact(Name, Email, Message)
     return render_template('contact.html')
-
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -81,7 +74,6 @@ def login():
             message = "Missing username, please try again"
     return render_template('login.html', message=message)
 
-
 @app.route('/verify', methods=['POST', 'GET'])
 def verify():
     print (otp)
@@ -93,22 +85,6 @@ def verify():
             session.pop('user', None)
             return redirect('/login')
     return render_template('/otp_verification.html')
-
-
-# @app.route('/validate', methods=['POST'])
-# def validate():
-#     email = session['email']
-#     user_otp = request.form.get('user_otp')
-#     # print(email)
-#     db_otp = get_db().get_otp(email)
-#     # print(db_otp)
-#     if db_otp == int(user_otp):
-#         # print(db_otp)
-#         print("successful")
-#         get_db().update_verify(email)
-#         return render_template('/contact.html')
-#     return "<h2>not successful</h2>"
-
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -125,6 +101,7 @@ def signup():
         elif name and email and password:
             encrypted_password = pbkdf2_sha256.hash(password)
             get_db().update_signup(name, email, encrypted_password, phone, birthday)
+            get_db().create_vaccine_schedule(email, phone)
             session['email'] = email
             msg = Message(subject='OTP', sender='vaccinationreminder2023@gmail.com', recipients=[email])
             msg.body = str(otp)
@@ -132,7 +109,6 @@ def signup():
             mail.send(msg)
             return redirect('/verify')
     return render_template('signup.html')
-
 
 @app.route('/forgot-password')
 def forgot_password():
@@ -151,12 +127,6 @@ def forgot_password():
             return render_template('/contact.html')
     return render_template('reset-password.html')
 
-
-# @app.route('/otp_verification')
-# def otp_verification():
-#     return render_template('otp_verification.html')
-
-
 @app.route('/reset-password', methods=['POST', 'GET'])
 def reset_password():
     message = None
@@ -174,34 +144,56 @@ def reset_password():
             return render_template('/contact.html')
     return render_template('reset-password.html')
 
+def get_vaccine_dates(dateFormat):
+    vaccineDates = []
+    dateOfBirth = datetime.strptime(session['user']['birthdate'], "%d/%m/%Y")
+    vaccineDates.append(datetime.strftime(dateOfBirth, dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=42), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=45), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=60), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=70), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=76), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=98), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=107), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=120), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=145), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=155), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=180), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=240), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=275), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=365), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=400), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=500), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=545), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=610), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=665), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=730), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=1825), dateFormat))
+    vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=3650), dateFormat))
+    return vaccineDates
+
+# A GET request to return all vaccine dates.
+@app.route('/api/get_vaccine_dates', methods=['GET'])
+def get_vaccinations_dates():
+  return get_vaccine_dates('%d/%m/%Y')
+
+@app.route('/api/update_vaccine_status', methods=['POST'])
+def update_vaccination_status():
+  vaccine = request.form.get('vaccine')
+  status = request.form.get('status')
+  get_db().update_vaccine_status(vaccine, status, session['user']['email'])
+  return redirect('/vaccine-schedule')
+
+# A GET request to return all vaccine status.
+@app.route('/api/get_vaccine_status', methods=['GET'])
+def get_vaccinations_status():
+  vaccinesStatus = get_db().get_vaccines_status(session['user']['email'])
+  return jsonify(vaccinesStatus)
+
 @app.route('/vaccine-schedule')
 def vaccine_schedule():
     if 'user' in session:
-      vaccineDates = []
-      dateOfBirth = datetime.strptime(session['user']['birthdate'], "%d/%m/%Y")
-      vaccineDates.append(datetime.strftime(dateOfBirth, "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=42), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=45), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=60), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=70), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=76), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=98), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=107), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=120), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=145), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=155), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=180), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=240), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=275), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=365), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=400), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=500), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=545), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=610), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=665), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=730), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=1825), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=3650), "%d/%m/%Y"))
+      vaccineDates = get_vaccine_dates("%d/%m/%Y")
       return render_template('vaccine-schedule.html', header = 'Vaccine Schedule', vaccineDates = vaccineDates)
     else:
       return redirect('/login')
@@ -209,32 +201,9 @@ def vaccine_schedule():
 @app.route('/calendar-schedule')
 def calendar_schedule():
     if 'user' in session:
-      vaccineDates = []
-      dateOfBirth = datetime.strptime(session['user']['birthdate'], "%d/%m/%Y")
-      vaccineDates.append(datetime.strftime(dateOfBirth, "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=42), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=45), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=60), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=70), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=76), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=98), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=107), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=120), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=145), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=155), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=180), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=240), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=275), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=365), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=400), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=500), "%d/%m/%Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=545), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=610), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=665), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=730), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=1825), "%d %B, %Y"))
-      vaccineDates.append(datetime.strftime(dateOfBirth + timedelta(days=3650), "%d %B, %Y"))
-      return render_template('calendar-schedule.html', header = 'Calendar Schedule', vaccineDates = vaccineDates)
+      today = date.today().strftime("%d %B, %Y")
+      vaccineDates = get_vaccine_dates("%d %B, %Y")
+      return render_template('calendar-schedule.html', header = 'Calendar Schedule', vaccineDates = vaccineDates, today = today)
     else:
       return redirect('/login')
 
