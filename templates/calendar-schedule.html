@@ -1,0 +1,437 @@
+<!-- Extend base template -->
+{% extends 'foundation.html' %}
+
+<!-- Set active class for 'Calendar Schedule' menu item -->
+{% set active = "Calendar Schedule" %}
+
+<!-- Update page title with 'Calendar Schedule' -->
+{% block title %} Calendar Schedule {% endblock %}
+
+<!-- Calendar Schedule page content -->
+{% block content %}
+  <div class="row fh5co-narrow-content vaccine-list">
+    <h2 class="fh5co-heading animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="margin-bottom:40px;">
+      <i class="fa fa-calendar" aria-hidden="true"></i>Date Wise Schedule</h2>
+    <div class="col-md-9 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="padding-left: 0;">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">26 Jan, 2023 (At Birth)</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div bcg_1" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">BCG - Dose 1</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_b_1" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">HEP B - Dose 1</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_1" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">OPV - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">09 Mar, 2023 (After 1 month and 12 days)</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_b_2" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">HEP B - Dose 2</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_2" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">OPV - Dose 2</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div dpt_1" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">DPT - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">12 Mar, 2023 (After 1 month and 15 days)</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div ipv_1" style="background-color: rgb(255, 118, 118);"></div>
+                <span class="panel-content-span">IPV - Dose 1</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div pneumococcal_1" style="background-color: rgb(255, 118, 118);"></div>
+                <span class="panel-content-span">PNEUMOCOCCAL - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">27 Mar, 2023 (After 2 months)</a>
+            </h4>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div rotavirus_1" style="background-color: rgb(153, 233, 153);"></div>
+                <span class="panel-content-span">ROTAVIRUS - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">06 Apr, 2023 (After 2 months and 10 days)</a>
+            </h4>
+          </div>
+          <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_3"></div>
+                <span class="panel-content-span">OPV - Dose 3</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div dpt_2"></div>
+                <span class="panel-content-span">DPT - Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">12 Apr, 2023 (After 2 months and 16 days)</a>
+            </h4>
+          </div>
+          <div id="collapse6" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div ipv_2"></div>
+                <span class="panel-content-span">IPV - Dose 2</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div pneumococcal_2"></div>
+                <span class="panel-content-span">PNEUMOCOCCAL - Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">04 May, 2023 (After 3 months and 8 days)</a>
+            </h4>
+          </div>
+          <div id="collapse7" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_4"></div>
+                <span class="panel-content-span">OPV - Dose 4</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div dpt_3"></div>
+                <span class="panel-content-span">DPT - Dose 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">13 May, 2023 (After 3 months and 15 days)</a>
+            </h4>
+          </div>
+          <div id="collapse8" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div ipv_3"></div>
+                <span class="panel-content-span">IPV - Dose 3</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div pneumococcal_3"></div>
+                <span class="panel-content-span">PNEUMOCOCCAL - Dose 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">26 May, 2023 (After 4 months)</a>
+            </h4>
+          </div>
+          <div id="collapse9" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hib_1"></div>
+                <span class="panel-content-span">HIB - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">20 Jun, 2023 (After 4 months and 15 days)</a>
+            </h4>
+          </div>
+          <div id="collapse10" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div rotavirus_2"></div>
+                <span class="panel-content-span">ROTAVIRUS - Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">30 Jun, 2023 (After 4 months and 24 days)</a>
+            </h4>
+          </div>
+          <div id="collapse11" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_5"></div>
+                <span class="panel-content-span">OPV - Dose 5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">25 Jul, 2023 (After 6 months)</a>
+            </h4>
+          </div>
+          <div id="collapse12" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_b_3"></div>
+                <span class="panel-content-span">HEP B - Dose 3</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hib_2"></div>
+                <span class="panel-content-span">HIB - Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">23 Sep, 2023 (After 8 months)</a>
+            </h4>
+          </div>
+          <div id="collapse13" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hib_3"></div>
+                <span class="panel-content-span">HIB - Dose 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse14">28 Oct, 2023 (After 9 month)</a>
+            </h4>
+          </div>
+          <div id="collapse14" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div measles_1"></div>
+                <span class="panel-content-span">MEASLES - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse15">26 Jan, 2024 (After 1 Year)</a>
+            </h4>
+          </div>
+          <div id="collapse15" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_a_1"></div>
+                <span class="panel-content-span">HEP A - Dose 1</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div chickenpox_1"></div>
+                <span class="panel-content-span">CHICKENPOX - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse16">01 Mar, 2024 (After 1 Year and 35 days)</a>
+            </h4>
+          </div>
+          <div id="collapse16" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_a_2"></div>
+                <span class="panel-content-span">HEP A - Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse17">09 Jun, 2024 (After 1 Year, 4 months and 15 days)</a>
+            </h4>
+          </div>
+          <div id="collapse17" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div mmr_1"></div>
+                <span class="panel-content-span">MMR - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse18">24 Jul, 2024 (After 1 Year and 6 months)</a>
+            </h4>
+          </div>
+          <div id="collapse18" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div hep_a_3"></div>
+                <span class="panel-content-span">HEP A - Dose 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse19">27 Sep, 2024 (After 1 Year and 9 months)</a>
+            </h4>
+          </div>
+          <div id="collapse19" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div dpt_booster_dose_1"></div>
+                <span class="panel-content-span">DPT - Booster Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse20">21 Nov, 2024 (After 1 Year, 10 months and 15 days)</a>
+            </h4>
+          </div>
+          <div id="collapse20" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_booster_dose_1"></div>
+                <span class="panel-content-span">OPV - Booster Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse21">25 Jan, 2025 (After 2 Years)</a>
+            </h4>
+          </div>
+          <div id="collapse21" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div typhoid_1"></div>
+                <span class="panel-content-span">TYPHOID - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse22">25 Jan, 2028 (After 5 Years)</a>
+            </h4>
+          </div>
+          <div id="collapse22" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div opv_booster_dose_2"></div>
+                <span class="panel-content-span">OPV - Booster Dose 2</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div dpt_booster_dose_2"></div>
+                <span class="panel-content-span">DPT - Booster Dose 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse23">23 Jan, 2033 (After 10 Years)</a>
+            </h4>
+          </div>
+          <div id="collapse23" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-content">
+                <div class="panel-content-div td_vac_1"></div>
+                <span class="panel-content-span">TD VAC - Dose 1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

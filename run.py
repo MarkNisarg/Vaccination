@@ -1,5 +1,4 @@
-from flask import (Flask, g, jsonify, redirect, render_template, request,
-                   session)
+from flask import (Flask, g, jsonify, redirect, render_template, request, session)
 from passlib.hash import pbkdf2_sha256
 from flask_mail import Mail, Message
 from random import randint
@@ -168,6 +167,77 @@ def reset_password():
             return render_template('/contact.html')
     return render_template('reset-password.html')
 
+@app.route('/vaccine-schedule')
+def vaccine_schedule():
+    return render_template('vaccine-schedule.html', header='Vaccine Schedule')
+
+@app.route('/calendar-schedule')
+def calendar_schedule():
+    return render_template('calendar-schedule.html', header='Calendar Schedule')
+
+@app.route('/vaccine-details')
+def vaccine_details():
+    return render_template('vaccine-details.html', header='Vaccine Details')
+
+@app.route('/vaccine-details/bcg-vaccine')
+def bcg_vaccine():
+    return render_template('bcg-vaccine.html', header='BCG Vaccine')
+
+@app.route('/vaccine-details/polio-vaccine')
+def polio_vaccine():
+    return render_template('polio-vaccine.html', header='Polio Vaccine')
+
+@app.route('/vaccine-details/hepatitis-a-vaccine')
+def hepatitis_a_vaccine():
+    return render_template('hepatitis-a-vaccine.html', header='Hepatitis A Vaccine')
+
+@app.route('/vaccine-details/hepatitis-b-vaccine')
+def hepatitis_b_vaccine():
+    return render_template('hepatitis-b-vaccine.html', header='Hepatitis B Vaccine')
+
+@app.route('/vaccine-details/dpt-vaccine')
+def dpt_vaccine():
+    return render_template('dpt-vaccine.html', header='DPT Vaccine')
+
+@app.route('/vaccine-details/hib-vaccine')
+def hib_vaccine():
+    return render_template('hib-vaccine.html', header='HIB Vaccine')
+
+@app.route('/vaccine-details/chickenpox-vaccine')
+def chickenpox_vaccine():
+    return render_template('chickenpox-vaccine.html', header='Chickenpox Vaccine')
+
+@app.route('/vaccine-details/measles-vaccine')
+def measles_vaccine():
+    return render_template('measles-vaccine.html', header='Measles Vaccine')
+
+@app.route('/vaccine-details/mmr-vaccine')
+def mmr_vaccine():
+    return render_template('mmr-vaccine.html', header='MMR Vaccine')
+
+@app.route('/vaccine-details/rotavirus-vaccine')
+def rotavirus_vaccine():
+    return render_template('rotavirus-vaccine.html', header='Rotavirus Vaccine')
+
+@app.route('/vaccine-details/typhoid-vaccine')
+def typhoid_vaccine():
+    return render_template('typhoid-vaccine.html', header='Typhoid Vaccine')
+
+@app.route('/vaccine-details/pneumococcal-vaccine')
+def pneumococcal_vaccine():
+    return render_template('typhoid-vaccine.html', header='Pneumococcal Vaccine')
+
+@app.route('/vaccine-details/tetanus-toxoid-vaccine')
+def tetanus_toxoid_vaccine():
+    return render_template('tetanus-toxoid-vaccine.html', header='Tetanus Toxoid Vaccine')
+
+@app.route('/ask-question')
+def ask_question():
+    return render_template('ask-question.html', header='Ask Question')
+
+@app.route('/profile')
+def profile_question():
+    return render_template('profile.html', header='Profile')
 
 if __name__ == '__main__':
     app.run(host='localhost', port=8082, debug=True)
