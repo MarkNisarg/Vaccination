@@ -23,7 +23,7 @@ class Database:
         account = c.fetchone()
         self.execute(
             "insert into registration_tbl(name,email,password,contact,birthdate,gender,otp) values(?,?,?,?,?,?,?)",
-            [name, email, password, contact, birthdate, 'M', '000000'])
+            [name, email, password, contact, birthdate, 'N/A', '000000'])
         self.conn.commit()
         print("You have successfully registered")
 
@@ -34,6 +34,17 @@ class Database:
     def update_vaccine_status(self, vaccine, status, email):
         self.execute('update vaccine_schedule_tbl set ' + vaccine + '=? where email=?', [status, email])
         self.conn.commit()
+
+    def get_users(self):
+        users = self.select('SELECT * FROM registration_tbl where isverify=1')
+        return [
+          {
+            'name': user[0],
+            'email':user[1],
+            'birthdate': user[4]
+          }
+          for user in users
+        ]
 
     def get_vaccines_status(self, email):
         data = self.select(
