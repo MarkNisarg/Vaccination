@@ -95,6 +95,10 @@ class Database:
         self.execute('UPDATE registration_tbl SET otp=? WHERE email=?', [otp, email])
         self.conn.commit()
 
+    def update_ask_tbl(self, email, contact,question):
+        self.execute('insert into ask_question_tbl (email,contact,message) values (?,?,?)', [email, contact, question])
+        self.conn.commit()
+
     def update_name(self, name, email):
         self.execute('UPDATE registration_tbl SET name=? WHERE email=?', [name, email])
         self.conn.commit()

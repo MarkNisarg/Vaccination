@@ -48,19 +48,20 @@
             </div>
         </div>
     </div>
-    <form action="" method="post" class="mt-5 digit-group vaccine-form" style="display: flex;
-	align-items: center;justify-content: center; flex-direction: row;">
+    <form action="" method="post" class="mt-5 digit-group vaccine-form">
+        <div style="text-align: center">
         <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1 name="digit1">
         <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1 name="digit2">
         <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1 name="digit3">
         <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1 name="digit4">
         <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1 name="digit5">
-        <input class="otp" type="text" oninput='digitValidate(this)'  maxlength=1 name="digit6">
-        <div class="vaccine-form" style="display: flex;
-        align-items: center;justify-content: center; flex-direction: row;" >
-          <button class="btn btn-primary" id="submitotp" value="Verify" type="submit">Verify<i class="fa fa-angle-right"
-                                              aria-hidden="true"></i></button>    </div>
+        <input class="otp" type="text" oninput='digitValidate(this)'  maxlength=1 name="digit6"></div>
+        <br>
+           <div  style="display:flex;
+                          align-items: center;justify-content: center;"><button class="btn btn-primary" value="Log In" type="submit">Verify <i class="fa fa-angle-right"
+                                                                                                       aria-hidden="true"></i></button>
 
+           </div>
 </form>
 
 {% endblock %}
