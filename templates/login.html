@@ -23,6 +23,12 @@
       <div class="row justify-content-center">
         <div class="col-md-6 col-lg-6">
 {#          <h2> Login Form </h2>#}
+            {% if message %}
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{ message }}
+                </div>
+            {% endif %}
           <form method="post">
             <input type="email" name="email" class="form-control" placeholder="Email Address" required="required">
             <input type="password" name="password" class="form-control" placeholder="Password" required="required">
