@@ -1072,6 +1072,27 @@ body.not-front #vaccine-main-nav div.form-inline a.login {
   font-size: 24px;
   padding-left: 0px;
 }
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 /*.digit-group input {*/
 /*  width: 35px;*/
 /*  height: 50px;*/
